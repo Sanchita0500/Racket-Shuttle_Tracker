@@ -84,7 +84,7 @@ class ContactScreen extends StatelessWidget{
 
                 GFAccordion(
                   title: "EMAIL ID:",textStyle: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold, color: Colors.black54),
-                  content: "\n vnitcontact@gmail.com \n",
+                  content: "\n vnitcontact@gmail.com  \n",
                   collapsedIcon: Icon(Icons.add_circle),
                   expandedIcon: Icon(Icons.arrow_circle_up_rounded),
 

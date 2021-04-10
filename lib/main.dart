@@ -7,6 +7,7 @@ import 'package:racket/AllScreens/LoginDriverScreen.dart';
 import 'package:racket/AllScreens/RegistrationScreen.dart';
 import 'package:racket/AllScreens/SearchScreen.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
+import 'package:racket/AllScreens/ProfileScreen.dart';
 
 
 void main() async {
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
             MainScreen.idScreen: (context) => MainScreen(),
             SearchScreen.idScreen: (context) => SearchScreen(),
             AboutScreen.idScreen: (context) => AboutScreen(),
+            ProfileScreen.idScreen: (context) => ProfileScreen(),
           },
       debugShowCheckedModeBanner: false,
     );

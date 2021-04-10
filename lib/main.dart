@@ -7,6 +7,7 @@ import 'package:racket/AllScreens/SearchScreen.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'AllScreens/DriverMainScreen.dart';
 import 'package:racket/AllScreens/LoginDriverScreen.dart';
 import 'AllScreens/Destinations.dart';
 import 'AllScreens/Destinations.dart';
@@ -49,6 +50,8 @@ class MyApp extends StatelessWidget {
             AboutScreen.idScreen: (context) => AboutScreen(),
             Destinations.idScreen: (context) => Destinations(),
             ContactUs.idScreen: (context) => ContactUs(),
+            DriverMainScreen.idScreen: (context) => DriverMainScreen(),
+            LoginDriverScreen.idScreen: (context) => LoginDriverScreen(),
           },
       debugShowCheckedModeBanner: false,
     );

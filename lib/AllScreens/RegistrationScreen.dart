@@ -35,7 +35,6 @@ class RegistrationScreen extends StatelessWidget {
                 height: 250.0,
                 alignment: Alignment.center,
               ),
-              //image change karni hai
               SizedBox(height: 15.0,),
               Text(
                 "Register",

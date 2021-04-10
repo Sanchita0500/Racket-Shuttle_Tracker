@@ -26,9 +26,26 @@ class _MainScreenState extends State<MainScreen> {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    target: LatLng(21.1232, 79.0515),
+    zoom: 18.4746,
   );
+
+  Set<Marker> _markers = {};
+
+  void  _onMapCreated(GoogleMapController controller){
+
+    _controllerGoogleMap.complete(controller);
+    newGoogleMapController = controller;
+
+    setState((){
+      _markers.add(
+          Marker(
+            markerId: MarkerId('id-5'),
+            position: LatLng(21.1232, 79.0515),
+            infoWindow: InfoWindow(title: "VNIT"),)
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,11 +118,8 @@ class _MainScreenState extends State<MainScreen> {
             mapType: MapType.normal,
             myLocationButtonEnabled: true,
             initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller)
-            {
-              _controllerGoogleMap.complete(controller);
-              newGoogleMapController = controller;
-            },
+            onMapCreated: _onMapCreated,
+            markers: _markers,
           ),
           /*Positioned(
             top: 45.0,
@@ -203,9 +217,9 @@ class _MainScreenState extends State<MainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Add Home"),
+                            Text("Add Hostel"),
                             SizedBox(height: 4.0,),
-                            Text("Your living home address",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
+                            Text("Your hostel's name",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
                           ],
                         )
                       ],
@@ -221,9 +235,9 @@ class _MainScreenState extends State<MainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Add Work"),
+                            Text("Add department"),
                             SizedBox(height: 4.0,),
-                            Text("Your office address",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
+                            Text("Your department's name",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
                           ],
                         )
                       ],

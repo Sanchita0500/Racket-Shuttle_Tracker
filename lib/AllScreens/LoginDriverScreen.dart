@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:racket/AllWidgets/ProgressDialog.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
 import 'package:racket/AllScreens/RegistrationScreen.dart';
+import 'package:racket/AllScreens/DriverMainScreen.dart';
 import 'package:racket/AllScreens/LoginScreen.dart';
 import 'package:racket/main.dart';
 
@@ -162,7 +163,7 @@ class LoginDriverScreen extends StatelessWidget {
     {
       driverRef.child(firebaseUser.uid).once().then((DataSnapshot snap){
         if(snap.value != null){
-          Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, DriverMainScreen.idScreen, (route) => false);
           displayToastMessage("You are now logged-in", context);
         }
         else

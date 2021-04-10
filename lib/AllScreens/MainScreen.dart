@@ -6,6 +6,7 @@ import 'package:racket/AllWidgets/Divider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:racket/AllScreens/SearchScreen.dart';
 import 'package:racket/AllScreens/AboutScreen.dart';
+import 'package:racket/AllScreens/ContactScreen.dart';
 
 class MainScreen extends StatefulWidget {
 
@@ -65,16 +66,21 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(height: 12.0),
 
               // Drawer Body
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text("History"),
-              ),
+
               ListTile(
                 leading: Icon(Icons.wysiwyg),
                 title: Text("About"),
                 onTap: ()
                 {
                   Navigator.pushNamedAndRemoveUntil(context, AboutScreen.idScreen, (route) => false);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.wysiwyg),
+                title: Text("Contact Us"),
+                onTap: ()
+                {
+                  Navigator.pushNamedAndRemoveUntil(context, ContactScreen.idScreen, (route) => false);
                 },
               ),
             ],

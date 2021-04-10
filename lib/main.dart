@@ -1,22 +1,16 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:racket/AllScreens/AboutScreen.dart';
 import 'package:racket/AllScreens/LoginScreen.dart';
-import 'package:racket/AllScreens/LoginDriverScreen.dart';
 import 'package:racket/AllScreens/RegistrationScreen.dart';
 import 'package:racket/AllScreens/SearchScreen.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
+import 'package:racket/AllScreens/ContactScreen.dart';
 
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
+void main() {
   runApp(MyApp());
 }
-
-DatabaseReference userRef = FirebaseDatabase.instance.reference().child("users");
-DatabaseReference driverRef = FirebaseDatabase.instance.reference().child("drivers");
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -40,11 +34,11 @@ class MyApp extends StatelessWidget {
       routes:
           {
             LoginScreen.idScreen: (context) => LoginScreen(),
-            LoginDriverScreen.idScreen: (context) => LoginDriverScreen(),
             RegistrationScreen.idScreen: (context) => RegistrationScreen(),
             MainScreen.idScreen: (context) => MainScreen(),
             SearchScreen.idScreen: (context) => SearchScreen(),
             AboutScreen.idScreen: (context) => AboutScreen(),
+            ContactScreen.idScreen: (context) => ContactScreen(),
           },
       debugShowCheckedModeBanner: false,
     );

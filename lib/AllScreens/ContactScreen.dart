@@ -3,17 +3,17 @@ import "package:flutter/material.dart";
 import 'package:getwidget/getwidget.dart';
 import 'package:racket/AllWidgets/Divider.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
-import 'package:racket/AllScreens/ContactScreen.dart';
+import 'package:racket/AllScreens/AboutScreen.dart';
 
-class AboutScreen extends StatelessWidget{
-  static const String idScreen = "about";
+class ContactScreen extends StatelessWidget{
+  static const String idScreen = "contact";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white30,
+      backgroundColor: Colors.white30,
 
-      appBar: AppBar(title: Text('About Racket'),),
+      appBar: AppBar(title: Text('Contact Us'),),
       drawer: Container(
         color: Colors.white,
         width: 255.0,
@@ -76,28 +76,33 @@ class AboutScreen extends StatelessWidget{
       ),
       body:SingleChildScrollView(
 
-          child: Container(
-          child: Column(
-            children: <Widget>[
+        child: Container(
+            child: Column(
+              children: <Widget>[
 
-              Image.asset('images/VNITview.jpg'),
+                Image.asset('images/VNITview.jpg'),
 
-              GFAccordion(
-                title: "ABOUT APP",textStyle: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold, color: Colors.black54),
-                content: "\n VNIT recently introduced a shuttle service on campus which made conveyance extremely convenient."
-                "The shuttles follow pre-defined routes around the campus, but the timing of their arrival and departure from a stop is generally unknown.\n\nOur project, Racket-Shuttle Tracker, aims to work around these issues as well as make it all-the-more comfortable for the people on campus to use.\n",
-                collapsedIcon: Icon(Icons.add_circle),
-                expandedIcon: Icon(Icons.arrow_circle_up_rounded),
+                GFAccordion(
+                  title: "EMAIL ID:",textStyle: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold, color: Colors.black54),
+                  content: "\n vnitcontact@gmail.com \n",
+                  collapsedIcon: Icon(Icons.add_circle),
+                  expandedIcon: Icon(Icons.arrow_circle_up_rounded),
 
-              ),GFAccordion(
-                title: "ABOUT US",
-                content: "VNIT \n(need to be updated)", textStyle: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.black54),
-                collapsedIcon: Icon(Icons.add_circle),
-                expandedIcon: Icon(Icons.arrow_circle_up_rounded),
+                ),GFAccordion(
+                  title: "PHONE NUMBER",
+                  content: "\n 8769543231 \n", textStyle: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.black54),
+                  collapsedIcon: Icon(Icons.add_circle),
+                  expandedIcon: Icon(Icons.arrow_circle_up_rounded),
 
-              )
-            ],
-          )
+                ),GFAccordion(
+                  title: "ADDRESS",
+                  content: "\n VNIT S.Ambazari Road, Nagpur \n",textStyle: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold, color: Colors.black54),
+                  collapsedIcon: Icon(Icons.add_circle),
+                  expandedIcon: Icon(Icons.arrow_circle_up_rounded),
+
+                )
+              ],
+            )
         ),
       ),
     );

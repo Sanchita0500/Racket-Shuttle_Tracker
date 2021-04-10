@@ -10,63 +10,16 @@ class AboutScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white30,
-
-      appBar: AppBar(title: Text('About Racket'),),
-      drawer: Container(
-        color: Colors.white,
-        width: 255.0,
-        child: Drawer(
-          child: ListView(
-            children: [
-              //Drawer Header
-              Container(
-                height: 165.0,
-                child: DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Row(
-                    children: [
-                      Icon(Icons.person),
-                      SizedBox(width: 16.0,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Name", style: TextStyle(fontSize: 16.0),),
-                          SizedBox(height: 6.0),
-                          Text("View Profile"),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              DividerWidget(),
-              SizedBox(height: 12.0),
-
-              // Drawer Body
-              ListTile(
-                leading: Icon(Icons.wysiwyg),
-                title: Text("Home"),
-                onTap: ()
-                {
-                  Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text("History"),
-              ),
-              ListTile(
-                leading: Icon(Icons.wysiwyg),
-                title: Text("About"),
-                onTap: ()
-                {
-                  Navigator.pushNamedAndRemoveUntil(context, AboutScreen.idScreen, (route) => false);
-                },
-              ),
-            ],
-          ),
+      backgroundColor: Colors.white30,
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: ()
+            {
+              Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
+            }
         ),
+        title: Text('About Racket'),
       ),
       body:SingleChildScrollView(
 

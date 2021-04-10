@@ -2,10 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:racket/AllScreens/ContactUs.dart';
 import 'package:racket/AllWidgets/Divider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:racket/AllScreens/SearchScreen.dart';
 import 'package:racket/AllScreens/AboutScreen.dart';
+
+import '../AllWidgets/Destinations.dart';
 
 class MainScreen extends StatefulWidget {
 
@@ -75,6 +78,20 @@ class _MainScreenState extends State<MainScreen> {
                 onTap: ()
                 {
                   Navigator.pushNamedAndRemoveUntil(context, AboutScreen.idScreen, (route) => false);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.place),
+                title: Text("Tram Destinations"),
+                onTap: (){
+                  Navigator.pushNamedAndRemoveUntil(context, Destinations.idScreen, (route) => false);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.contact_page_outlined),
+                title: Text("Contact Us"),
+                onTap: (){
+                  Navigator.pushNamedAndRemoveUntil(context, ContactUs.idScreen, (route) => false);
                 },
               ),
             ],

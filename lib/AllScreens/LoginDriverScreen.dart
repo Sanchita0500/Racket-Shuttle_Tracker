@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:racket/AllWidgets/ProgressDialog.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
 import 'package:racket/AllScreens/RegistrationScreen.dart';
-import 'package:racket/AllScreens/LoginDriverScreen.dart';
+import 'package:racket/AllScreens/LoginScreen.dart';
 import 'package:racket/main.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginDriverScreen extends StatelessWidget {
 
-  static const String idScreen = "loginScreen";
+  static const String idScreen = "loginDriverScreen";
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
 
@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
               //image change karni hai
               SizedBox(height: 15.0,),
               Text(
-                "Student Login",
+                "Driver Login",
                 style: TextStyle(fontSize: 24.0, fontFamily: "Sansation", fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -83,8 +83,8 @@ class LoginScreen extends StatelessWidget {
                           primary: Colors.yellow,
                           onPrimary: Colors.white,
                           shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(24.0),
-                      )),
+                            borderRadius: new BorderRadius.circular(24.0),
+                          )),
                       child: Container(
                         height: 50.0,
                         child: Center(
@@ -119,16 +119,16 @@ class LoginScreen extends StatelessWidget {
                   Navigator.pushNamedAndRemoveUntil(context, RegistrationScreen.idScreen, (route) => false);
                 },
                 child: Text(
-                  "Do not have an account? Click here",
+                  "Do not have an account? Click here ",
                 ),
               ),
               TextButton(
                 onPressed: ()
                 {
-                  Navigator.pushNamedAndRemoveUntil(context, LoginDriverScreen.idScreen, (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, LoginScreen.idScreen, (route) => false);
                 },
                 child: Text(
-                  "Click here for driver log-in",
+                  "Click here for student log-in",
                 ),
               )
             ],
@@ -160,7 +160,7 @@ class LoginScreen extends StatelessWidget {
 
     if(firebaseUser != null)
     {
-      userRef.child(firebaseUser.uid).once().then((DataSnapshot snap){
+      driverRef.child(firebaseUser.uid).once().then((DataSnapshot snap){
         if(snap.value != null){
           Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
           displayToastMessage("You are now logged-in", context);

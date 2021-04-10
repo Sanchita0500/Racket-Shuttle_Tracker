@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1719266510",
+    "firebase_url": "https://racket-3d404-default-rtdb.firebaseio.com",
+    "project_id": "racket-3d404",
+    "storage_bucket": "racket-3d404.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1719266510:android:872c795a3fc37c2001b49f",
+        "android_client_info": {
+          "package_name": "com.racket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1719266510-e0fctha59613tdt3c0um317e9stg2f18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJVFB-VshqwwPBrCsp-ABqvj-iG_GXSmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1719266510-e0fctha59613tdt3c0um317e9stg2f18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

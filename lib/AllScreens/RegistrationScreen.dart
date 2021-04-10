@@ -14,8 +14,10 @@ class RegistrationScreen extends StatelessWidget {
 
   TextEditingController nameTextEditingController = TextEditingController();
   TextEditingController emailTextEditingController = TextEditingController();
-  TextEditingController phoneTextEditingController = TextEditingController();
+  TextEditingController studentIdTextEditingController = TextEditingController();
+  TextEditingController enrollmentNumTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
+  TextEditingController confirmPasswordTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class RegistrationScreen extends StatelessWidget {
             children: [
               SizedBox(height: 25.0,),
               Image(
-                image: AssetImage("images/logo.png"),
+                image: AssetImage("images/VNITview.jpg"),
                 width: 390.0,
                 height: 250.0,
                 alignment: Alignment.center,
@@ -82,10 +84,27 @@ class RegistrationScreen extends StatelessWidget {
 
                     SizedBox(height: 15.0,),
                     TextField(
-                      controller: phoneTextEditingController,
-                      keyboardType: TextInputType.phone,
+                      controller: studentIdTextEditingController,
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                          labelText: "Phone",
+                          labelText: "Student ID",
+                          labelStyle: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                          hintStyle: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10.0
+                          )
+                      ),
+                      style: TextStyle(fontSize: 14.0),
+                    ),
+
+                    SizedBox(height: 15.0,),
+                    TextField(
+                      controller: enrollmentNumTextEditingController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          labelText: "Enrollment Number",
                           labelStyle: TextStyle(
                             fontSize: 14.0,
                           ),
@@ -104,6 +123,24 @@ class RegistrationScreen extends StatelessWidget {
                       obscureText: true,
                       decoration: InputDecoration(
                           labelText: "Password",
+                          labelStyle: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                          hintStyle: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10.0
+                          )
+                      ),
+                      style: TextStyle(fontSize: 14.0),
+                    ),
+
+                    SizedBox(height: 15.0,),
+                    TextField(
+                      controller: confirmPasswordTextEditingController,
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          labelText: "Confirm Password",
                           labelStyle: TextStyle(
                             fontSize: 14.0,
                           ),
@@ -135,19 +172,25 @@ class RegistrationScreen extends StatelessWidget {
                       {
                         if(nameTextEditingController.text.length < 4)
                         {
-                          displayToastMessage("name must be atleast 4 characters long", context);
+                          displayToastMessage("Name must be at least 4 characters long", context);
                         }
                         else if(!emailTextEditingController.text.contains("@"))
                         {
                           displayToastMessage("Invalid email address", context);
                         }
-                        else if(phoneTextEditingController.text.isEmpty)
+                        else if(studentIdTextEditingController.text.length != 5)
                         {
-                          displayToastMessage("Phone field is mandatory", context);
+                          displayToastMessage("Invalid student ID", context);
+                        }
+                        else if(enrollmentNumTextEditingController.text.length != 10) {
+                          displayToastMessage("Invalid enrollment number", context);
                         }
                         else if(passwordTextEditingController.text.length < 6)
                         {
-                          displayToastMessage("password must be atleast 6 characters long", context);
+                          displayToastMessage("Password must be at least 6 characters long", context);
+                        }
+                        else if (passwordTextEditingController.text != confirmPasswordTextEditingController.text) {
+                          displayToastMessage("Password doesn't match", context);
                         }
                         else
                         {
@@ -176,7 +219,7 @@ class RegistrationScreen extends StatelessWidget {
     );
   }
 
-  /*final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;*/
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   void registerNewUser(BuildContext context) async
   {
     showDialog(
@@ -187,7 +230,7 @@ class RegistrationScreen extends StatelessWidget {
         }
     );
 
-    /*final User firebaseUser = (await _firebaseAuth.createUserWithEmailAndPassword(
+    final User firebaseUser = (await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailTextEditingController.text,
         password: passwordTextEditingController.text).
     catchError((errMsg)
@@ -202,12 +245,11 @@ class RegistrationScreen extends StatelessWidget {
       Map userDataMap = {
         "name": nameTextEditingController.text.trim(),
         "email": emailTextEditingController.text.trim(),
-        "phone": phoneTextEditingController.text.trim(),
+        "studentid": studentIdTextEditingController.text.trim(),
+        "enrollmentno": enrollmentNumTextEditingController.text.trim()
       };
 
-      userRef.child(firebaseUser.uid).set(userDataMap);*/
-    if (true)
-    {
+      userRef.child(firebaseUser.uid).set(userDataMap);
       displayToastMessage("Congrats! Your account has been created successfully", context);
 
       Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);

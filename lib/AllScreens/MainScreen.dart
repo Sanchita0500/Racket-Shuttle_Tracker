@@ -156,7 +156,7 @@ class _MainScreenState extends State<MainScreen> {
                     GestureDetector(
                       onTap: ()
                       {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen()));
+                        Navigator.pushNamed(context, SearchScreen.idScreen);
                       },
                       child: Container(
                         decoration: BoxDecoration(

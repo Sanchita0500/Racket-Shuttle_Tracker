@@ -68,10 +68,7 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(height: 12.0),
 
               // Drawer Body
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text("History"),
-              ),
+
               ListTile(
                 leading: Icon(Icons.wysiwyg),
                 title: Text("About"),
@@ -90,9 +87,9 @@ class _MainScreenState extends State<MainScreen> {
               ListTile(
                 leading: Icon(Icons.contact_page_outlined),
                 title: Text("Contact Us"),
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamedAndRemoveUntil(context, ContactUs.idScreen, (route) => false);
-                },
+                }
               ),
             ],
           ),

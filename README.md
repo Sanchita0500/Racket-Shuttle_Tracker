@@ -13,13 +13,13 @@ Our project, Racket-Shuttle Tracker, aims to work around these issues as well as
 - While registerring, user needs to enter all the useful information like College Id, Enrollment Number etc.
 - After logging in, user will be able to see VNIT map on main screen and select his drop off and pickup location for the trip.
 
-![](https://i.imgur.com/kYTdcNP.jpg =200x)  ![](https://i.imgur.com/6sBSNUU.jpg =200x)
+![](https://i.imgur.com/kYTdcNP.jpg)  ![](https://i.imgur.com/6sBSNUU.jpg)
 
 
 - User will be able to view some of his details on the profile section. There is also an option to set profile picture.
 - If anyone wishes to know more about our project or contact us to become a contributor we have About Us and Contact Us pages as well
 
-![](https://i.imgur.com/J8UjM1U.jpg =200x)  ![](https://i.imgur.com/oypGXai.jpg =200x)
+![](https://i.imgur.com/J8UjM1U.jpg)  ![](https://i.imgur.com/oypGXai.jpg)
 
 
 - There is also registration and login portal for the drivers.
@@ -28,7 +28,7 @@ Our project, Racket-Shuttle Tracker, aims to work around these issues as well as
 - After definite time interval, all the requests will be flushed
 - After seeing markings on the map, driver will be able to plan appropriate route for the shuttle.
 
-![](https://i.imgur.com/RGggWu0.jpg =200x) ![](https://i.imgur.com/aaAGJz4.jpg =200x) ![](https://i.imgur.com/1xBgZQ7.jpg =200x)
+![](https://i.imgur.com/RGggWu0.jpg) ![](https://i.imgur.com/aaAGJz4.jpg) ![](https://i.imgur.com/1xBgZQ7.jpg)
 
 
 ## Future Updates

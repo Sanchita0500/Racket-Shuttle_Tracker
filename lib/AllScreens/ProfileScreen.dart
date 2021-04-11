@@ -1,8 +1,9 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:racket/AllScreens/MainScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
 
@@ -13,16 +14,23 @@ class ProfileScreen extends StatefulWidget {
 
 }
 
+
+
 class MapScreenState extends State<ProfileScreen>
     with SingleTickerProviderStateMixin {
-
+  User user;
+  String name;
+  String email;
+  String mobile;
   bool _status = true;
   final FocusNode myFocusNode = FocusNode();
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
   }
   File _image;
 
@@ -81,7 +89,25 @@ class MapScreenState extends State<ProfileScreen>
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+    final FirebaseAuth _firebaseAuth= FirebaseAuth.instance;
+    user = _firebaseAuth.currentUser;
+    email = "demo";
+    mobile = " 9876543210";
+    if(user != null){
+      if(user.uid != null){
+        name = user.uid;
+      }
+      if(user.email != null){
+        email = user.email;
+      }
+      if(user.phoneNumber != null){
+        mobile = user.email;
+
+      }
+    }
+
+
     return new Scaffold(
         body: new Container(
           color: Colors.white,
@@ -99,10 +125,10 @@ class MapScreenState extends State<ProfileScreen>
                             child: new Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                new Icon(
-                                  Icons.arrow_back_ios,
+                                new IconButton(
+                                  icon : new Icon(Icons.arrow_back_ios),
                                   color: Colors.black,
-                                  size: 22.0,
+                                  onPressed: () {Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen , (route) => false);},
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 25.0),
@@ -112,7 +138,7 @@ class MapScreenState extends State<ProfileScreen>
                                           fontSize: 24.0,
                                           fontFamily: 'sans-serif-light',
                                           color: Colors.black)),
-                                )
+                                ),
                               ],
                             )),
                         Padding(
@@ -210,7 +236,7 @@ class MapScreenState extends State<ProfileScreen>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Parsonal Information',
+                                        'Personal Information',
                                         style: TextStyle(
                                             fontSize: 20.0,
                                             fontWeight: FontWeight.bold),
@@ -254,7 +280,7 @@ class MapScreenState extends State<ProfileScreen>
                                 children: <Widget>[
                                   new Flexible(
                                     child: new Text(
-                                      'Demo Name'
+                                       name
                                     ),
                                   ),
                                 ],
@@ -287,7 +313,7 @@ class MapScreenState extends State<ProfileScreen>
                                 children: <Widget>[
                                   new Flexible(
                                     child: new Text(
-                                      'demo@email.com'
+                                      email
                                     ),
                                   ),
                                 ],
@@ -320,7 +346,7 @@ class MapScreenState extends State<ProfileScreen>
                                 children: <Widget>[
                                   new Flexible(
                                     child: new Text(
-                                      '9876543210'
+                                      mobile
                                     ),
                                   ),
                                 ],

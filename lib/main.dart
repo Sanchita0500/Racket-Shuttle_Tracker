@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:racket/AllScreens/AboutScreen.dart';
 import 'package:racket/AllScreens/ContactUs.dart';
 import 'package:racket/AllScreens/LoginScreen.dart';
+import 'package:racket/AllScreens/ProfileScreen.dart';
 import 'package:racket/AllScreens/RegistrationScreen.dart';
 import 'package:racket/AllScreens/SearchScreen.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
@@ -9,7 +10,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'AllScreens/DriverMainScreen.dart';
 import 'package:racket/AllScreens/LoginDriverScreen.dart';
-import 'AllScreens/Destinations.dart';
 import 'AllScreens/Destinations.dart';
 
 
@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // This is the theme of your application.
         //
-        // Try running your application with "flutter run". You'll see the
         // application has a blue toolbar. Then, without quitting the app, try
         // changing the primarySwatch below to Colors.green and then invoke
         // "hot reload" (press "r" in the console where you ran "flutter run",
@@ -52,6 +51,7 @@ class MyApp extends StatelessWidget {
             ContactUs.idScreen: (context) => ContactUs(),
             DriverMainScreen.idScreen: (context) => DriverMainScreen(),
             LoginDriverScreen.idScreen: (context) => LoginDriverScreen(),
+            ProfileScreen.idScreen: (context) => ProfileScreen(),
           },
       debugShowCheckedModeBanner: false,
     );

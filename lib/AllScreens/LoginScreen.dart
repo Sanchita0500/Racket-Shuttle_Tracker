@@ -8,6 +8,7 @@ import 'package:racket/AllScreens/RegistrationScreen.dart';
 import 'package:racket/AllScreens/LoginDriverScreen.dart';
 import 'package:racket/main.dart';
 
+
 class LoginScreen extends StatelessWidget {
 
   static const String idScreen = "loginScreen";
@@ -140,6 +141,8 @@ class LoginScreen extends StatelessWidget {
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   static User firebaseUser;
+
+
   void loginAndAuthenticateUser(BuildContext context) async
   {
     showDialog(

@@ -32,6 +32,7 @@ dependencies:
   firebase_auth: ^1.0.1
   firebase_database: ^6.1.1
 
+
   #For google maps
   google_maps_flutter: ^2.0.2
 

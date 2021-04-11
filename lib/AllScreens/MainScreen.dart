@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:racket/AllScreens/ContactUs.dart';
+import 'package:racket/AllScreens/ProfileScreen.dart';
 import 'package:racket/AllWidgets/Divider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:racket/AllScreens/SearchScreen.dart';
@@ -74,7 +75,7 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Text("Name", style: TextStyle(fontSize: 16.0),),
                           SizedBox(height: 6.0),
-                          Text("View Profile"),
+                          // Text("View Profile"),
                         ],
                       )
                     ],
@@ -99,6 +100,13 @@ class _MainScreenState extends State<MainScreen> {
                 title: Text("Tram Destinations"),
                 onTap: (){
                   Navigator.pushNamedAndRemoveUntil(context, Destinations.idScreen, (route) => false);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text("View Profile"),
+                onTap: (){
+                  Navigator.pushNamedAndRemoveUntil(context, ProfileScreen.idScreen, (route) => false);
                 },
               ),
               ListTile(

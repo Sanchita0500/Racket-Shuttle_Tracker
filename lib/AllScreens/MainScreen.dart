@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:racket/AllScreens/ProfileScreen.dart';
+import 'package:racket/AllScreens/ContactUs.dart';
 import 'package:racket/AllWidgets/Divider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:racket/AllScreens/SearchScreen.dart';
 import 'package:racket/AllScreens/AboutScreen.dart';
+
+import '../AllWidgets/Destinations.dart';
 
 class MainScreen extends StatefulWidget {
 
@@ -24,9 +26,26 @@ class _MainScreenState extends State<MainScreen> {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
+    target: LatLng(21.1232, 79.0515),
+    zoom: 18.4746,
   );
+
+  Set<Marker> _markers = {};
+
+  void  _onMapCreated(GoogleMapController controller){
+
+    _controllerGoogleMap.complete(controller);
+    newGoogleMapController = controller;
+
+    setState((){
+      _markers.add(
+          Marker(
+            markerId: MarkerId('id-5'),
+            position: LatLng(21.1232, 79.0515),
+            infoWindow: InfoWindow(title: "VNIT"),)
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +75,6 @@ class _MainScreenState extends State<MainScreen> {
                           Text("Name", style: TextStyle(fontSize: 16.0),),
                           SizedBox(height: 6.0),
                           Text("View Profile"),
-
                         ],
                       )
                     ],
@@ -67,10 +85,7 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(height: 12.0),
 
               // Drawer Body
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text("History"),
-              ),
+
               ListTile(
                 leading: Icon(Icons.wysiwyg),
                 title: Text("About"),
@@ -80,12 +95,18 @@ class _MainScreenState extends State<MainScreen> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.person),
-                title: Text("Profile"),
-                onTap: ()
-                {
-                  Navigator.pushNamedAndRemoveUntil(context, ProfileScreen.idScreen, (route) => false);
+                leading: Icon(Icons.place),
+                title: Text("Tram Destinations"),
+                onTap: (){
+                  Navigator.pushNamedAndRemoveUntil(context, Destinations.idScreen, (route) => false);
                 },
+              ),
+              ListTile(
+                leading: Icon(Icons.contact_page_outlined),
+                title: Text("Contact Us"),
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(context, ContactUs.idScreen, (route) => false);
+                }
               ),
             ],
           ),
@@ -97,11 +118,8 @@ class _MainScreenState extends State<MainScreen> {
             mapType: MapType.normal,
             myLocationButtonEnabled: true,
             initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller)
-            {
-              _controllerGoogleMap.complete(controller);
-              newGoogleMapController = controller;
-            },
+            onMapCreated: _onMapCreated,
+            markers: _markers,
           ),
           /*Positioned(
             top: 45.0,
@@ -199,9 +217,9 @@ class _MainScreenState extends State<MainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Add Home"),
+                            Text("Add Hostel"),
                             SizedBox(height: 4.0,),
-                            Text("Your living home address",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
+                            Text("Your hostel's name",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
                           ],
                         )
                       ],
@@ -217,9 +235,9 @@ class _MainScreenState extends State<MainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Add Work"),
+                            Text("Add department"),
                             SizedBox(height: 4.0,),
-                            Text("Your office address",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
+                            Text("Your department's name",style: TextStyle(color: Colors.black54,fontSize: 12.0),),
                           ],
                         )
                       ],

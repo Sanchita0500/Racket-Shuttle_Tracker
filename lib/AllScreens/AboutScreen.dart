@@ -10,63 +10,16 @@ class AboutScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white30,
-
-      appBar: AppBar(title: Text('About Racket'),),
-      drawer: Container(
-        color: Colors.white,
-        width: 255.0,
-        child: Drawer(
-          child: ListView(
-            children: [
-              //Drawer Header
-              Container(
-                height: 165.0,
-                child: DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Row(
-                    children: [
-                      Icon(Icons.person),
-                      SizedBox(width: 16.0,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Name", style: TextStyle(fontSize: 16.0),),
-                          SizedBox(height: 6.0),
-                          Text("View Profile"),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              DividerWidget(),
-              SizedBox(height: 12.0),
-
-              // Drawer Body
-              ListTile(
-                leading: Icon(Icons.wysiwyg),
-                title: Text("Home"),
-                onTap: ()
-                {
-                  Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.history),
-                title: Text("History"),
-              ),
-              ListTile(
-                leading: Icon(Icons.wysiwyg),
-                title: Text("About"),
-                onTap: ()
-                {
-                  Navigator.pushNamedAndRemoveUntil(context, AboutScreen.idScreen, (route) => false);
-                },
-              ),
-            ],
-          ),
+      backgroundColor: Colors.white30,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: ()
+          {
+            Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
+          }
         ),
+        title: Text('About Racket'),
       ),
       body:SingleChildScrollView(
 
@@ -86,12 +39,6 @@ class AboutScreen extends StatelessWidget{
               ),GFAccordion(
                 title: "ABOUT US",
                 content: "VNIT \n(need to be updated)", textStyle: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.black54),
-                collapsedIcon: Icon(Icons.add_circle),
-                expandedIcon: Icon(Icons.arrow_circle_up_rounded),
-
-              ),GFAccordion(
-                title: "CONTACT US",
-                content: "Email id: xxyz@gmail.com \n \n Phone Number: 8769543231 \n \n Address : VNIT S.Ambazari Road, Nagpur",textStyle: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold, color: Colors.black54),
                 collapsedIcon: Icon(Icons.add_circle),
                 expandedIcon: Icon(Icons.arrow_circle_up_rounded),
 

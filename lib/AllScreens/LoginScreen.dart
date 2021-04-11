@@ -139,6 +139,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  static User firebaseUser;
   void loginAndAuthenticateUser(BuildContext context) async
   {
     showDialog(
@@ -149,7 +150,7 @@ class LoginScreen extends StatelessWidget {
         }
     );
 
-    final User firebaseUser = (await _firebaseAuth.signInWithEmailAndPassword(
+    final firebaseUser = (await _firebaseAuth.signInWithEmailAndPassword(
         email: emailTextEditingController.text,
         password: passwordTextEditingController.text).
     catchError((errMsg)

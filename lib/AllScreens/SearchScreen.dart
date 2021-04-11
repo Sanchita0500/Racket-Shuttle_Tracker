@@ -5,6 +5,9 @@ import 'package:racket/AllScreens/LoginScreen.dart';
 import 'package:racket/AllWidgets/ProgressDialog.dart';
 import 'package:intl/intl.dart';
 import '../main.dart';
+import 'package:racket/AllWidgets/globals.dart' as globals;
+
+import 'RegistrationScreen.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String idScreen = "search";
@@ -16,6 +19,8 @@ class SearchScreen extends StatefulWidget {
 DateTime now = DateTime.now();
 String formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
 
+User user = FirebaseAuth.instance.currentUser;
+
 class DropDownList extends StatefulWidget {
 
   @override
@@ -24,27 +29,22 @@ class DropDownList extends StatefulWidget {
 
 class _DropDownListState extends State<DropDownList> {
 
-  String dropdownValue = '-';
+  //String dropdownValue = '-';
 
   @override
   Widget build(BuildContext context) {
     return  DropdownButton<String>(
       isExpanded: true,
-      value: dropdownValue,
+      value: globals.dropdownValue,
       underline: Container(),
       icon: Icon(Icons.arrow_downward),
       iconSize: 20.0, // can be changed, default: 24.0
       iconEnabledColor: Colors.black,
       onChanged: (String newValue) {
         setState(() {
-          dropdownValue = newValue;
+          globals.dropdownValue = newValue;
         });
-        if(LoginScreen.firebaseUser != null){
-          Map userDataMap = {
-            "from": dropdownValue
-          };
-          userRef.child(LoginScreen.firebaseUser.uid).child(formattedDate).set(userDataMap);
-        }
+
       },
       items: <String>['Administrative Building','Architecture','Auditorium','Boys Hostel','Canteen','Chemical','Chemistry', 'Classroom Complex',
         'Computer Science','Electronics','Electrical','Girls Hostel','Health Centre','Mathematics','Metallurgy','Mechanical','Physics','Sports Ground','Workshops', '-']
@@ -67,7 +67,6 @@ class _SearchScreenState extends State<SearchScreen> {
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: ()
             {
-              userRef.child(LoginScreen.firebaseUser.uid).child(formattedDate).remove();
               Navigator.pop(context);
             }
         ),
@@ -207,7 +206,32 @@ class _SearchScreenState extends State<SearchScreen> {
 }
 
 void SaveDataToDataBase(BuildContext context) {
-  Navigator.pop(context);
+
+  showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context){
+        return ProgressDialog(message: "Adding destination, please wait...",);
+      }
+  );
+
+  if(user != null){
+
+    Map userDataMap = {
+      "from": globals.dropdownValue,
+      "to": globals.dropdownValueWhere
+    };
+
+    userRef.child(formattedDate).set(userDataMap);
+    displayToastMessage("Your destination added successfully", context);
+
+    Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
+  }
+  else
+  {
+    Navigator.pop(context);
+    displayToastMessage("Couldn't update destination", context);
+  }
 
 }
 
@@ -219,13 +243,13 @@ class DropDownListWhere extends StatefulWidget {
 
 class _DropDownListStateWhere extends State<DropDownListWhere> {
 
-  String dropdownValue = '-';
+  //static String dropdownValueWhere = '-';
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       isExpanded: true,
-      value: dropdownValue,
+      value: globals.dropdownValueWhere,
       underline: Container(),
       icon: Icon(Icons.arrow_downward),
       iconSize: 20.0,
@@ -233,13 +257,7 @@ class _DropDownListStateWhere extends State<DropDownListWhere> {
       iconEnabledColor: Colors.black,
       onChanged: (String newValue) {
         setState(() {
-          dropdownValue = newValue;
-          if(LoginScreen.firebaseUser != null){
-            Map userDataMap = {
-              "to": dropdownValue
-            };
-            userRef.child(LoginScreen.firebaseUser.uid).child(formattedDate).set(userDataMap);
-          }
+          globals.dropdownValueWhere = newValue;
         });
       },
       items: <String>[

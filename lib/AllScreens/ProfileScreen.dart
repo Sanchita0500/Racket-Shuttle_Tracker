@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:racket/AllScreens/MainScreen.dart';
+import 'package:racket/main.dart';
 
 class ProfileScreen extends StatefulWidget {
 
@@ -96,13 +97,13 @@ class MapScreenState extends State<ProfileScreen>
     mobile = " 9876543210";
     if(user != null){
       if(user.uid != null){
-        name = user.uid;
+        name = "Shreya";
       }
       if(user.email != null){
         email = user.email;
       }
       if(user.phoneNumber != null){
-        mobile = user.email;
+        mobile = user.phoneNumber;
 
       }
     }

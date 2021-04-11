@@ -24,14 +24,14 @@ class _DriverMainScreenState extends State<DriverMainScreen> {
 
   void  _onMapCreated(GoogleMapController controller){
     setState((){
-      _markers.add(
-        Marker(
-            markerId: MarkerId('id-1'),
-            position: LatLng(21.146633, 79.088860),
-            infoWindow: InfoWindow(title: "Library"),),
-            //icon: desticon.png,
-            //Library
-      );
+      // _markers.add(
+      //   Marker(
+      //       markerId: MarkerId('id-1'),
+      //       position: LatLng(21.146633, 79.088860),
+      //       infoWindow: InfoWindow(title: "Library"),),
+      //       //icon: desticon.png,
+      //       //Library
+      // );
       _markers.add(
         Marker(
             markerId: MarkerId('id-2'),
@@ -40,14 +40,14 @@ class _DriverMainScreenState extends State<DriverMainScreen> {
             //icon: desticon.png,
             //CSE department
       );
-      _markers.add(
-        Marker(
-            markerId: MarkerId('id-3'),
-            position: LatLng(21.125424, 79.050774),
-            infoWindow: InfoWindow(title: "Classroom Complex"),),
-            //icon: desticon.png
-            //classroom complex
-      );
+      // _markers.add(
+      //   Marker(
+      //       markerId: MarkerId('id-3'),
+      //       position: LatLng(21.125424, 79.050774),
+      //       infoWindow: InfoWindow(title: "Classroom Complex"),),
+      //       //icon: desticon.png
+      //       //classroom complex
+      // );
       _markers.add(
         Marker(
             markerId: MarkerId('id-4'),

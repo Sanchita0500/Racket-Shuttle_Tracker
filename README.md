@@ -1,7 +1,5 @@
 # Racket - Shuttle Tracker
 
-[TOC]
-
 ## Introduction
 VNIT recently introduced a shuttle service on campus which made conveyance extremely convenient. The shuttles follow pre-defined routes around the campus, but the timing of their arrival and departure from a stop is generally unknown.
 
@@ -41,3 +39,4 @@ Our project, Racket-Shuttle Tracker, aims to work around these issues as well as
 ## Tech Stack 
 - Flutter for app development
 - Firebase Database
+- Google Maps API
